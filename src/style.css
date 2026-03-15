@@ -1,0 +1,123 @@
+/* src/styles.css - updated visual layout */
+
+:root{
+  --bg: linear-gradient(135deg,#89f7fe 0%, #66a6ff 100%);
+  --card-bg: rgba(255,255,255,0.95);
+  --accent: #0f172a;
+  --muted: #475569;
+  --accent-2: #1e40af;
+  --tile-bg: rgba(255,255,255,0.85);
+}
+
+*{box-sizing:border-box}
+body,html,#root{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+body{
+  background: var(--bg);
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:28px;
+  color:var(--accent);
+}
+
+/* app container */
+.app {
+  width:100%;
+  max-width:1100px;
+  background: transparent;
+  border-radius:12px;
+  padding:18px;
+}
+
+/* header */
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+.title{
+  font-size:1.45rem;
+  font-weight:700;
+  color:var(--accent);
+}
+.controls{display:flex;gap:10px;align-items:center}
+
+/* page layout */
+.main {
+  display:grid;
+  grid-template-columns: 1fr 360px;
+  gap:18px;
+  align-items:start;
+}
+
+/* card */
+.card {
+  background: var(--card-bg);
+  border-radius:12px;
+  padding:16px;
+  box-shadow: 0 8px 30px rgba(13, 38, 75, 0.08);
+}
+
+/* Forecast column */
+.forecast-column { padding: 2px; }
+.heading { font-size:1.25rem; font-weight:700; margin-bottom:12px; color:var(--accent-2) }
+
+/* grid of tiles */
+.forecast-grid {
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:12px;
+}
+
+@media (max-width:900px) {
+  .main { grid-template-columns: 1fr; }
+  .forecast-grid { grid-template-columns: repeat(1, 1fr); }
+}
+
+/* each tile */
+.tile {
+  background: var(--tile-bg);
+  border-radius:10px;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  align-items:flex-start;
+  min-height:110px;
+  box-shadow: 0 4px 12px rgba(8, 15, 30, 0.05);
+}
+.tile .date { font-weight:700; color:var(--accent); }
+.tile .temps { font-size:1.05rem; font-weight:700; }
+.tile .meta { font-size:0.92rem; color:var(--muted); }
+
+/* right column: stacked cards */
+.right-stack { display:flex; flex-direction:column; gap:14px; }
+.current {
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.current .temp {
+  font-size:48px; font-weight:800; color:var(--accent-2);
+}
+.current .meta { color:var(--muted); }
+
+/* AQI card layout */
+.aqi-grid {
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:8px;
+}
+.aqi-row { display:flex; justify-content:space-between; align-items:center; padding:6px 8px; border-radius:8px; background:rgba(14, 165, 233, 0.04) }
+.aqi-label { font-weight:700; color:var(--accent) }
+.aqi-val { color:var(--muted) }
+
+/* small helpers */
+.small { font-size:0.95rem; color:var(--muted); }
+.search-input{padding:10px;border-radius:10px;border:1px solid rgba(14, 165, 233, 0.15);min-width:240px}
+.btn{padding:8px 14px;border-radius:10px;border:none;cursor:pointer;background:var(--accent-2);color:white}
+.toggle{padding:7px 10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:white;cursor:pointer}
+.loading{padding:20px;text-align:center}
+.error{color:#b91c1c;font-weight:600}
